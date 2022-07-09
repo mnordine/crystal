@@ -17,7 +17,7 @@ class Socket < IO
     @volatile_fd.get
   end
 
-  @closed : Bool
+  getter? closed = false
 
   getter family : Family
   getter type : Type
@@ -434,10 +434,6 @@ class Socket < IO
     return if closed?
 
     close rescue nil
-  end
-
-  def closed? : Bool
-    @closed
   end
 
   def tty?
